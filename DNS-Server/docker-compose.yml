@@ -1,0 +1,29 @@
+services:
+  dns-server:
+    container_name: dns-server
+    hostname: dns-server
+    image: technitium/dns-server:latest
+    ports:
+      - "5380:5380/tcp"  # Web console (HTTP)
+      - "53:53/udp"      # DNS service
+      - "53:53/tcp"      # DNS service
+    # Optional ports:
+    # - "53443:53443/tcp"  # Web console (HTTPS)
+    # - "853:853/udp"      # DNS-over-QUIC
+    # - "853:853/tcp"      # DNS-over-TLS
+    # - "443:443/udp"      # DNS-over-HTTPS (HTTP/3)
+    # - "443:443/tcp"      # DNS-over-HTTPS
+    environment:
+      - DNS_SERVER_DOMAIN=dns-server
+      # Uncomment for production:
+      # - DNS_SERVER_ADMIN_PASSWORD=your_secure_password
+      # - DNS_SERVER_RECURSION=AllowOnlyForPrivateNetworks
+      # - DNS_SERVER_FORWARDERS=1.1.1.1,8.8.8.8
+    volumes:
+      - config:/etc/dns
+    restart: unless-stopped
+    sysctls:
+      - net.ipv4.ip_local_port_range=1024 65000
+
+volumes:
+  config:

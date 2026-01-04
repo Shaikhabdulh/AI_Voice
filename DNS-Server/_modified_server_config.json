@@ -1,0 +1,136 @@
+{
+  "mcpServers": {
+    "playbook-repo": {
+      "name": "playbook-repo",
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/Users/christopherhay/chris-source/chuk-ai/mcp-servers/chuk-mcp-playbook",
+        "chuk-mcp-playbook"
+      ],
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    },
+    "sqlite": {
+      "name": "sqlite",
+      "command": "uvx",
+      "args": [
+        "mcp-server-sqlite",
+        "--db-path",
+        "test.db"
+      ],
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    },
+    "echo": {
+      "name": "echo",
+      "command": "uvx",
+      "args": [
+        "chuk-mcp-echo",
+        "stdio"
+      ],
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    },
+    "notion": {
+      "name": "notion",
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm"
+      },
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "cloudflare_workers": {
+      "name": "cloudflare_workers",
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm"
+      },
+      "url": "https://bindings.mcp.cloudflare.com/mcp"
+    },
+    "brave_search": {
+      "name": "brave_search",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@brave/brave-search-mcp-server"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "${TOKEN:bearer:brave_search}",
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    },
+    "monday": {
+      "name": "monday",
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm"
+      },
+      "url": "https://mcp.monday.com/mcp"
+    },
+    "playwright": {
+      "name": "playwright",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    },
+    "linkedin": {
+      "name": "linkedin",
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm"
+      },
+      "url": "https://linkedin.chukai.io/mcp"
+    },
+    "weather": {
+      "name": "weather",
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm"
+      },
+      "url": "https://weather.chukai.io/mcp"
+    },
+    "telnet": {
+      "name": "telnet",
+      "command": "uvx",
+      "args": [
+        "chuk-mcp-telnet-client"
+      ],
+      "env": {
+        "PATH": "F:\\Github\\Data\\DNS_Server\\.venv\\Scripts;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand;c:\\Users\\Shaikh_Family\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\GitHub CLI\\;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Users\\Shaikh_Family\\.cargo\\bin;C:\\Users\\Shaikh_Family\\.local\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Shaikh_Family\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Shaikh_Family\\AppData\\Local\\Microsoft\\WinGet\\Packages\\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\.bun\\bin;C:\\Users\\Shaikh_Family\\AppData\\Roaming\\npm",
+        "PYTHONWARNINGS": "ignore",
+        "LOG_LEVEL": "WARNING",
+        "CHUK_LOG_LEVEL": "WARNING",
+        "MCP_LOG_LEVEL": "WARNING"
+      }
+    }
+  },
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-4",
+  "theme": "default",
+  "verbose": true,
+  "confirmTools": true
+}

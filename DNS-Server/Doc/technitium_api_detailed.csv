@@ -1,0 +1,171 @@
+Category,API Name,Endpoint,Full URL Example,Permissions,Required Parameters,Optional Parameters,Response Fields,Has Response Example
+User & Authentication,Login,/api/user/login,http://localhost:5380/api/user/login?user=admin&pass=admin&includeInfo=true,None,"user, pass","totp (optional), includeInfo (optional)","displayName, username, totpEnabled, token, info",Yes
+User & Authentication,Create API Token,/api/user/createToken,http://localhost:5380/api/user/createToken?user=admin&pass=admin&tokenName=MyToken1,None,"user, pass, tokenName",totp (optional),"username, tokenName, token, status",Yes
+User & Authentication,Logout,/api/user/logout,http://localhost:5380/api/user/logout?token=932b2a3495852c15af01598f62563ae534460388b6a370bfbbb8bb60...,None,token,,status,Yes
+User & Authentication,Get Session Info,/api/user/session/get,http://localhost:5380/api/user/session/get?token=932b2a3495852c15af01598f62563ae534460388b6a370bfbbb...,None,token,,,Yes
+User & Authentication,Delete User Session,/api/user/session/delete,http://localhost:5380/api/user/session/delete?token=x&partialToken=620c3bfcd09d0a07,None,"token, partialToken",,,Yes
+User & Authentication,Change Password,/api/user/changePassword,http://localhost:5380/api/user/changePassword?token=x&pass=password&newPass=newpassword,None,"token, pass, newPass","totp (optional), iterations (optional)",status,Yes
+User & Authentication,Initialize 2FA,/api/user/2fa/init,http://localhost:5380/api/user/2fa/init?token=x,None,token,,"totpEnabled, qrCodePngImage, secret",Yes
+User & Authentication,Enable 2FA,/api/user/2fa/enable,http://localhost:5380/api/user/2fa/enable?token=x,None,"token, totp",,status,Yes
+User & Authentication,Disable 2FA,/api/user/2fa/disable,http://localhost:5380/api/user/2fa/disable?token=x,None,token,,status,Yes
+User & Authentication,Get User Profile Details,/api/user/profile/get,http://localhost:5380/api/user/profile/get?token=x,None,token,,"displayName, username, totpEnabled, disabled, previousSessionLoggedOn",Yes
+User & Authentication,Set User Profile Details,/api/user/profile/set,http://localhost:5380/api/user/profile/set?token=x&displayName=Administrator&sessionTimeoutSeconds=1...,None,token,"displayName (optional), sessionTimeoutSeconds (optional)","displayName, username, totpEnabled, disabled, previousSessionLoggedOn",Yes
+User & Authentication,Check For Update,/api/user/checkForUpdate,http://localhost:5380/api/user/checkForUpdate?token=x,None,token,,"updateAvailable, updateVersion, currentVersion, updateTitle, updateMessage",Yes
+Dashboard & Statistics,Get Stats,/api/dashboard/stats/get,http://localhost:5380/api/dashboard/stats/get?token=x&type=LastHour&utc=true,Dashboard: View,"token, node","type (optional), utc (optional), dontTrimQueryTypeData (optional), start (optional), end (optional)","stats, mainChartData, queryResponseChartData, queryTypeChartData, protocolTypeChartData",Yes
+Dashboard & Statistics,Get Top Stats,/api/dashboard/stats/getTop,http://localhost:5380/api/dashboard/stats/getTop?token=x&type=LastHour&statsType=TopClients&limit=10...,Dashboard: View,"token, node, statsType","type (optional), start (optional), end (optional), limit (optional), noReverseLookup (optional)",,No
+Dashboard & Statistics,Delete All Stats,/api/dashboard/stats/deleteAll,http://localhost:5380/api/dashboard/stats/deleteAll?token=x,Dashboard: Delete,"token, node",,,Yes
+Zone Management,List Zones,/api/zones/list,http://localhost:5380/api/zones/list?token=x&pageNumber=1&zonesPerPage=10,"Zones: View\
+Zone: View",token,"node (optional), pageNumber (optional), zonesPerPage (optional)","pageNumber, totalPages, totalZones, zones",Yes
+Zone Management,List Catalog Zones,/api/zones/catalogs/list,http://localhost:5380/api/zones/catalogs/list?token=x,"Zones: View\
+Zone: View",token,node (optional),catalogZoneNames,Yes
+Zone Management,Create Zone,/api/zones/create,http://localhost:5380/api/zones/create?token=x&zone=example.com&type=Primary,Zones: Modify,"token, zone, type","node (optional), catalog (optional), useSoaSerialDateScheme (optional), primaryNameServerAddresses (optional), zoneTransferProtocol (optional)",domain,Yes
+Zone Management,Import Zone,/api/zones/import,http://localhost:5380/api/zones/import?token=x&zone=example.com&overwrite=true&overwriteSoaSerial=fa...,"Zones: Modify
+Zone: Modify","token, zone","node (optional), overwrite (optional), overwriteSoaSerial (optional)",status,Yes
+Zone Management,Export Zone,/api/zones/export,http://localhost:5380/api/zones/export?token=x&zone=example.com,"Zones: View
+Zone: View","token, zone",node (optional),,No
+Zone Management,Clone Zone,/api/zones/clone,http://localhost:5380/api/zones/clone?token=x&zone=example.com&sourceZone=template.com,"Zones: Modify
+Zone: View","token, zone, sourceZone",node (optional),status,Yes
+Zone Management,Convert Zone Type,/api/zones/convert,http://localhost:5380/api/zones/convert?token=x&zone=example.com&type=Primary,"Zones: Delete
+Zone: Delete","token, zone, type",node (optional),status,Yes
+Zone Management,Enable Zone,/api/zones/enable,http://localhost:5380/api/zones/enable?token=x&zone=example.com,"Zones: Modify\
+Zone: Modify","token, zone",node (optional),status,Yes
+Zone Management,Disable Zone,/api/zones/disable,http://localhost:5380/api/zones/disable?token=x&zone=example.com,"Zones: Modify\
+Zone: Modify","token, zone",node (optional),status,Yes
+Zone Management,Delete Zone,/api/zones/delete,http://localhost:5380/api/zones/delete?token=x&zone=example.com,"Zones: Delete\
+Zone: Delete","token, zone",node (optional),status,Yes
+Zone Management,Resync Zone,/api/zones/resync,http://localhost:5380/api/zones/resync?token=x&zone=example.com,"Zones: Modify\
+Zone: Modify","token, zone",node (optional),status,Yes
+Zone Management,Get Zone Options,/api/zones/options/get,http://localhost:5380/api/zones/options/get?token=x&zone=example.com&includeAvailableTsigKeyNames=tr...,"Zones: Modify\
+Zone: View","token, zone, includeAvailableCatalogZoneNames, includeAvailableTsigKeyNames",node (optional),"name, type, internal, dnssecStatus, notifyFailed",Yes
+Zone Management,Set Zone Options,/api/zones/options/set,http://localhost:5380/api/zones/options/set?token=x&zone=example.com&disabled=false&zoneTransfer=All...,"Zones: Modify\
+Zone: Delete","token, zone","node (optional), disabled (optional), catalog (optional), overrideCatalogQueryAccess (optional), overrideCatalogZoneTransfer (optional)",status,Yes
+Zone Management,Get Zone Permissions,/api/zones/permissions/get,http://localhost:5380/api/zones/permissions/get?token=x&zone=example.com&includeUsersAndGroups=true,"Zones: Modify\
+Zone: View","token, zone, includeUsersAndGroups",node (optional),"section, subItem, userPermissions, groupPermissions, users",Yes
+Zone Management,Set Zone Permissions,/api/zones/permissions/set,http://localhost:5380/api/zones/permissions/set?token=x&zone=example.com&userPermissions=admin|true|...,"Zones: Modify\
+Zone: Delete","token, zone","node (optional), userPermissions (optional), groupPermissions (optional)","section, subItem, userPermissions, groupPermissions",Yes
+Zone Management,Sign Zone,/api/zones/dnssec/sign,http://localhost:5380/api/zones/dnssec/sign?token=x&zone=example.com&algorithm=ECDSA&dnsKeyTtl=86400...,,"token, zone, algorithm","node (optional), pemKskPrivateKey (optional), pemZskPrivateKey (optional), hashAlgorithm (optional), kskKeySize (optional)",status,Yes
+Zone Management,Unsign Zone,/api/zones/dnssec/unsign,"http://localhost:5380/api/zones/dnssec/unsign?token=x&zone=example.com
+
+OBSOLETE PATH:\","Zones: Modify\
+Zone: Delete","token, zone",node (optional),status,Yes
+Zone Management,Get DS Info,/api/zones/dnssec/viewDS,"http://localhost:5380/api/zones/dnssec/viewDS?token=x&zone=example.com
+
+PERMISSIONS:\
+Zones: View\
+Z...","Zones: View\
+Zone: View","token, zone",node (optional),"name, type, internal, disabled, dnssecStatus",Yes
+Zone Management,Get DNSSEC Properties,/api/zones/dnssec/properties/get,http://localhost:5380/api/zones/dnssec/properties/get?token=x&zone=example.com,"Zones: Modify\
+Zone: View","token, zone",node (optional),"name, type, internal, disabled, dnssecStatus",Yes
+Zone Management,Convert To NSEC,/api/zones/dnssec/properties/convertToNSEC,http://localhost:5380/api/zones/dnssec/properties/convertToNSEC?token=x&zone=example.com,"Zones: Modify\
+Zone: Delete","token, zone",node (optional),status,Yes
+Zone Management,Convert To NSEC3,/api/zones/dnssec/properties/convertToNSEC3,http://localhost:5380/api/zones/dnssec/properties/convertToNSEC3?token=x&zone=example.com,"Zones: Modify\
+Zone: Delete","token, zone",node (optional),status,Yes
+Zone Management,Update NSEC3 Parameters,/api/zones/dnssec/properties/updateNSEC3Params,http://localhost:5380/api/zones/dnssec/properties/updateNSEC3Params?token=x&zone=example.com&iterati...,"Zones: Modify\
+Zone: Delete","token, zone","node (optional), iterations (optional), saltLength (optional)",status,Yes
+Zone Management,Update DNSKEY TTL,/api/zones/dnssec/properties/updateDnsKeyTtl,http://localhost:5380/api/zones/dnssec/properties/updateDnsKeyTtl?token=x&zone=example.com&ttl=86400,"Zones: Modify\
+Zone: Delete","token, zone, ttl",node (optional),status,Yes
+Zone Management,Add Private Key,/api/zones/dnssec/properties/addPrivateKey,http://localhost:5380/api/zones/dnssec/properties/addPrivateKey?token=x&zone=example.com&keyType=Key...,"Zones: Modify\
+Zone: Delete","token, zone, keyType, algorithm","node (optional), rolloverDays (optional), pemPrivateKey (optional), hashAlgorithm (optional), keySize (optional)",status,Yes
+Zone Management,Update Private Key,/api/zones/dnssec/properties/updatePrivateKey,http://localhost:5380/api/zones/dnssec/properties/updatePrivateKey?token=x&zone=example.com&keyTag=1...,"Zones: Modify\
+Zone: Delete","token, zone, keyTag, rolloverDays",node (optional),status,Yes
+Zone Management,Delete Private Key,/api/zones/dnssec/properties/deletePrivateKey,http://localhost:5380/api/zones/dnssec/properties/deletePrivateKey?token=x&zone=example.com&keyTag=1...,"Zones: Modify\
+Zone: Delete","token, zone, keyTag",node (optional),status,Yes
+Zone Management,Publish All Private Keys,/api/zones/dnssec/properties/publishAllPrivateKeys,http://localhost:5380/api/zones/dnssec/properties/publishAllPrivateKeys?token=x&zone=example.com,"Zones: Modify\
+Zone: Delete","token, zone",node (optional),status,Yes
+Zone Management,Rollover DNSKEY,/api/zones/dnssec/properties/rolloverDnsKey,http://localhost:5380/api/zones/dnssec/properties/rolloverDnsKey?token=x&zone=example.com&keyTag=123...,"Zones: Modify\
+Zone: Delete","token, zone, keyTag",node (optional),status,Yes
+Zone Management,Retire DNSKEY,/api/zones/dnssec/properties/retireDnsKey,http://localhost:5380/api/zones/dnssec/properties/retireDnsKey?token=x&zone=example.com&keyTag=12345,"Zones: Modify\
+Zone: Delete","token, zone, keyTag",node (optional),status,Yes
+Zone Management,Add Record,/api/zones/records/add,http://localhost:5380/api/zones/records/add?token=x&domain=example.com&zone=example.com,"Zones: None\
+Zone: Modify","token, domain, type","node (optional), zone (optional), ttl (optional), overwrite (optional), comments (optional)","zone, addedRecord",Yes
+Zone Management,Get Records,/api/zones/records/get,http://localhost:5380/api/zones/records/get?token=x&domain=example.com&zone=example.com&listZone=tru...,"Zones: None\
+Zone: View","token, domain","node (optional), zone (optional), listZone (optional)","zone, records",Yes
+Zone Management,Update Record,/api/zones/records/update,http://localhost:5380/api/zones/records/update?token=x&domain=mail.example.com&zone=example.com&type...,"Zones: None\
+Zone: Modify","token, domain, type","node (optional), zone (optional), newDomain (optional), ttl (optional), disable (optional)","zone, updatedRecord",Yes
+Zone Management,Delete Record,/api/zones/records/delete,http://localhost:5380/api/zones/records/delete?token=x&domain=example.com&zone=example.com&type=A&va...,"Zones: None\
+Zone: Delete","token, domain, type","node (optional), zone (optional), ipAddress (optional), updateSvcbHints (optional), nameServer (optional)",,Yes
+Cache Management,List Cached Zones,/api/cache/list,http://localhost:5380/api/cache/list?token=x&domain=google.com,Cache: View,token,"domain (Optional), direction (Optional)","domain, zones, records",Yes
+Cache Management,Delete Cached Zone,/api/cache/delete,http://localhost:5380/api/cache/delete?token=x&domain=google.com,Cache: Delete,"token, domain",,status,Yes
+Cache Management,Flush DNS Cache,/api/cache/flush,http://localhost:5380/api/cache/flush?token=x,Cache: Delete,token,,status,Yes
+Allow Lists,List Allowed Zones,/api/allowed/list,http://localhost:5380/api/allowed/list?token=x&domain=google.com,Allowed: View,token,"node (optional), domain (Optional), direction (Optional)","domain, zones, records",Yes
+Allow Lists,Allow Zone,/api/allowed/add,http://localhost:5380/api/allowed/add?token=x&domain=google.com,Allowed: Modify,"token, domain",,status,Yes
+Allow Lists,Delete Allowed Zone,/api/allowed/delete,http://localhost:5380/api/allowed/delete?token=x&domain=google.com,Allowed: Delete,"token, domain",,status,Yes
+Allow Lists,Flush Allowed Zone,/api/allowed/flush,http://localhost:5380/api/allowed/flush?token=x,Allowed: Delete,token,,status,Yes
+Allow Lists,Import Allowed Zones,/api/allowed/import,http://localhost:5380/api/allowed/import?token=x,Allowed: Modify,token,,status,Yes
+Allow Lists,Export Allowed Zones,/api/allowed/export,http://localhost:5380/api/allowed/export?token=x,Allowed: View,token,node (optional),,No
+Block Lists,List Blocked Zones,/api/blocked/list,http://localhost:5380/api/blocked/list?token=x&domain=google.com,Blocked: View,token,"node (optional), domain (Optional), direction (Optional)","domain, zones, records",Yes
+Block Lists,Block Zone,/api/blocked/add,http://localhost:5380/api/blocked/add?token=x&domain=google.com,Blocked: Modify,"token, domain",,status,Yes
+Block Lists,Delete Blocked Zone,/api/blocked/delete,http://localhost:5380/api/blocked/delete?token=x&domain=google.com,Blocked: Delete,"token, domain",,status,Yes
+Block Lists,Flush Blocked Zone,/api/blocked/flush,http://localhost:5380/api/blocked/flush?token=x,Blocked: Delete,token,,status,Yes
+Block Lists,Import Blocked Zones,/api/blocked/import,http://localhost:5380/api/blocked/import?token=x,Blocked: Modify,token,,status,Yes
+Block Lists,Export Blocked Zones,/api/blocked/export,http://localhost:5380/api/blocked/export?token=x,Blocked: View,token,node (optional),,No
+DNS Applications,List Apps,/api/apps/list,http://localhost:5380/api/apps/list?token=x,Apps/Zones/Logs: View,token,node (optional),apps,Yes
+DNS Applications,List Store Apps,/api/apps/listStoreApps,http://localhost:5380/api/apps/listStoreApps?token=x,Apps: View,token,node (optional),storeApps,Yes
+DNS Applications,Download And Install App,/api/apps/downloadAndInstall,http://localhost:5380/api/apps/downloadAndInstall?token=x&name=app-name&url=https://example.com/app....,Apps: Delete,"token, name, url",,installedApp,Yes
+DNS Applications,Download And Update App,/api/apps/downloadAndUpdate,http://localhost:5380/api/apps/downloadAndUpdate?token=x&name=app-name&url=https://example.com/app.z...,Apps: Delete,"token, name, url",,updatedApp,Yes
+DNS Applications,Install App,/api/apps/install,http://localhost:5380/api/apps/install?token=x&name=app-name,Apps: Delete,"token, name",,installedApp,Yes
+DNS Applications,Update App,/api/apps/update,http://localhost:5380/api/apps/update?token=x&name=app-name,Apps: Delete,"token, name",,updatedApp,Yes
+DNS Applications,Uninstall App,/api/apps/uninstall,http://localhost:5380/api/apps/uninstall?token=x&name=app-name,Apps: Delete,"token, name",,,Yes
+DNS Applications,Get App Config,/api/apps/config/get,http://localhost:5380/api/apps/config/get?token=x&name=app-name,Apps: View,"token, name",node (optional),config,Yes
+DNS Applications,Set App Config,/api/apps/config/set,http://localhost:5380/api/apps/config/set?token=x&name=app-name,Apps: Modify,"token, name",,,Yes
+DNS Client,Resolve Query,/api/dnsClient/resolve,http://localhost:5380/api/dnsClient/resolve?token=x&server=this-server&domain=example.com&type=A&pro...,DnsClient: View,"token, server, domain, type","node (optional), protocol (optional), dnssec (optional), eDnsClientSubnet (optional), import (optional)","result, rawResponses",Yes
+Server Settings,Get DNS Settings,/api/settings/get,http://localhost:5380/api/settings/get?token=x,Settings: View,token,,"version, uptimestamp, dnsServerDomain, dnsServerLocalEndPoints, dnsServerIPv4SourceAddresses",Yes
+Server Settings,Set DNS Settings,/api/settings/set,http://localhost:5380/api/settings/set?token=x&dnsServerDomain=server1&dnsServerLocalEndPoints=0.0.0...,Settings: Modify,"token, defaultRecordTtl (optional, cluster parameter), defaultNsRecordTtl (optional, cluster parameter), defaultSoaRecordTtl (optional, cluster parameter), defaultResponsiblePerson (optional, cluster parameter)","dnsServerDomain (optional), dnsServerLocalEndPoints (optional), dnsServerIPv4SourceAddresses (optional), dnsServerIPv6SourceAddresses (optional), preferIPv6 (optional)",,No
+Server Settings,Get TSIG Key Names,/api/settings/getTsigKeyNames,http://localhost:5380/api/settings/getTsigKeyNames?token=x,Settings: View OR Zones: Modify,token,,tsigKeyNames,Yes
+Server Settings,Force Update Block Lists,/api/settings/forceUpdateBlockLists,http://localhost:5380/api/settings/forceUpdateBlockLists?token=x,Settings: Modify,token,,status,Yes
+Server Settings,Temporarily Disable Block Lists,/api/settings/temporaryDisableBlocking,http://localhost:5380/api/settings/temporaryDisableBlocking?token=x&minutes=5,Settings: Modify,"token, minutes",,temporaryDisableBlockingTill,Yes
+Server Settings,Backup Settings,/api/settings/backup,http://localhost:5380/api/settings/backup?token=x&blockLists=true&logs=true&scopes=true&stats=true&z...,Settings: Delete,token,"node (optional), authConfig (optional), clusterConfig (optional), webServiceSettings (optional), dnsSettings (optional)",,No
+Server Settings,Restore Settings,/api/settings/restore,http://localhost:5380/api/settings/restore?token=x&blockLists=true&logs=true&scopes=true&stats=true&...,Settings: Delete,token,"node (optional), authConfig (optional), clusterConfig (optional), webServiceSettings (optional), dnsSettings (optional)",,No
+DHCP Server,List DHCP Leases,/api/dhcp/leases/list,http://localhost:5380/api/dhcp/leases/list?token=x,DhcpServer: View,token,,,Yes
+DHCP Server,Remove DHCP Lease,/api/dhcp/leases/remove,http://localhost:5380/api/dhcp/leases/remove?token=x&name=Default&hardwareAddress=00:00:00:00:00:00,DhcpServer: Delete,"token, name","clientIdentifier (optional), hardwareAddress (optional)",,Yes
+DHCP Server,Convert To Reserved Lease,/api/dhcp/leases/convertToReserved,http://localhost:5380/api/dhcp/leases/convertToReserved?token=x&name=Default&hardwareAddress=00:00:0...,DhcpServer: Modify,"token, name","clientIdentifier (optional), hardwareAddress (optional)",,Yes
+DHCP Server,Convert To Dynamic Lease,/api/dhcp/leases/convertToDynamic,http://localhost:5380/api/dhcp/leases/convertToDynamic?token=x&name=Default&hardwareAddress=00:00:00...,DhcpServer: Modify,"token, name","clientIdentifier (optional), hardwareAddress (optional)",,Yes
+DHCP Server,List DHCP Scopes,/api/dhcp/scopes/list,http://localhost:5380/api/dhcp/scopes/list?token=x,DhcpServer: View,token,,scopes,Yes
+DHCP Server,Get DHCP Scope,/api/dhcp/scopes/get,http://localhost:5380/api/dhcp/scopes/get?token=x&name=Default,DhcpServer: View,"token, name",,"name, startingAddress, endingAddress, subnetMask, leaseTimeDays",Yes
+DHCP Server,Set DHCP Scope,/api/dhcp/scopes/set,http://localhost:5380/api/dhcp/scopes/set?token=x&name=Default&startingAddress=192.168.1.1&endingAdd...,DhcpServer: Modify,"token, name","newName (optional), startingAddress (optional), endingAddress (optional), subnetMask (optional), leaseTimeDays (optional)",,Yes
+DHCP Server,Add Reserved Lease,/api/dhcp/scopes/addReservedLease,http://localhost:5380/api/dhcp/scopes/addReservedLease?token=x&name=Default&hardwareAddress=00:00:00...,DhcpServer: Modify,"token, name, hardwareAddress, ipAddress","hostName (optional), comments (optional)",,Yes
+DHCP Server,Remove Reserved Lease,/api/dhcp/scopes/removeReservedLease,http://localhost:5380/api/dhcp/scopes/removeReservedLease?token=x&name=Default&hardwareAddress=00:00...,DhcpServer: Modify,"token, name, hardwareAddress",,,Yes
+DHCP Server,Enable DHCP Scope,/api/dhcp/scopes/enable,http://localhost:5380/api/dhcp/scopes/enable?token=x&name=Default,DhcpServer: Modify,"token, name",,,Yes
+DHCP Server,Disable DHCP Scope,/api/dhcp/scopes/disable,http://localhost:5380/api/dhcp/scopes/disable?token=x&name=Default,DhcpServer: Modify,"token, name",,,Yes
+DHCP Server,Delete DHCP Scope,/api/dhcp/scopes/delete,http://localhost:5380/api/dhcp/scopes/delete?token=x&name=Default,DhcpServer: Delete,"token, name",,,Yes
+Administration,List Sessions,/api/admin/sessions/list,http://localhost:5380/api/admin/sessions/list?token=x,Administration: View,token,node (optional),sessions,Yes
+Administration,Create API Token,/api/admin/sessions/createToken,http://localhost:5380/api/admin/sessions/createToken?token=x&user=admin&tokenName=MyToken1,Administration: Modify,"token, user, tokenName",,"username, tokenName, token",Yes
+Administration,Delete Session,/api/admin/sessions/delete,http://localhost:5380/api/admin/sessions/delete?token=x&partialToken=ddfaecb8e9325e77,Administration: Delete,"token, partialToken",node (optional),,Yes
+Administration,List Users,/api/admin/users/list,http://localhost:5380/api/admin/users/list?token=x,Administration: View,token,node (optional),users,Yes
+Administration,Create User,/api/admin/users/create,http://localhost:5380/api/admin/users/create?token=x&displayName=User&user=user1&pass=password,Administration: Modify,"token, user, pass",displayName (optional),"displayName, username, disabled, previousSessionLoggedOn, previousSessionRemoteAddress",Yes
+Administration,Get User Details,/api/admin/users/get,"http://localhost:5380/api/admin/users/get?token=x&user=admin&includeGroups=true
+
+PERMISSIONS:\
+Admin...",Administration: View,"token, user","node (optional), includeGroups (optional)","displayName, username, totpEnabled, disabled, previousSessionLoggedOn",Yes
+Administration,Set User Details,/api/admin/users/set,http://localhost:5380/api/admin/users/set?token=x&user=admin&displayName=Administrator&disabled=fals...,Administration: Modify,"token, user","displayName (optional), newUser (optional), totpEnabled (optional), disabled (optional), sessionTimeoutSeconds (optional)","displayName, username, totpEnabled, disabled, previousSessionLoggedOn",Yes
+Administration,Delete User,/api/admin/users/delete,http://localhost:5380/api/admin/users/delete?token=x&user=user1,Administration: Delete,"token, user",,,Yes
+Administration,List Groups,/api/admin/groups/list,http://localhost:5380/api/admin/groups/list?token=x,Administration: View,token,node (optional),groups,Yes
+Administration,Create Group,/api/admin/groups/create,http://localhost:5380/api/admin/groups/create?token=x&group=Group1&description=My%20description,Administration: Modify,"token, group",description (optional),"name, description",Yes
+Administration,Get Group Details,/api/admin/groups/get,http://localhost:5380/api/admin/groups/get?token=x&group=Administrators&includeUsers=true,Administration: View,"token, group","node (optional), includeUsers (optional)","name, description, members, users",Yes
+Administration,Set Group Details,/api/admin/groups/set,http://localhost:5380/api/admin/groups/set?token=x&group=Administrators&description=Super%20administ...,Administration: Modify,"token, group","newGroup (optional), description (optional), members (optional)","name, description, members",Yes
+Administration,Delete Group,/api/admin/groups/delete,http://localhost:5380/api/admin/groups/delete?token=x&group=Group1,Administration: Delete,"token, group",,,Yes
+Administration,List Permissions,/api/admin/permissions/list,http://localhost:5380/api/admin/permissions/list?token=x,Administration: View,token,node (optional),permissions,Yes
+Administration,Get Permission Details,/api/admin/permissions/get,http://localhost:5380/api/admin/permissions/get?token=x&section=Dashboard&includeUsersAndGroups=true,Administration: View,"token, section",includeUsersAndGroups (optional),"section, userPermissions, groupPermissions, users, groups",Yes
+Administration,Set Permission Details,/api/admin/permissions/set,http://localhost:5380/api/admin/permissions/set?token=x&section=Dashboard&userPermissions=shreyas|tr...,Administration: Delete,"token, section","node (optional), userPermissions (optional), groupPermissions (optional)","section, userPermissions, groupPermissions",Yes
+Administration,Get Cluster state,/api/admin/cluster/state,http://localhost:5380/api/admin/cluster/state?token=x&includeServerIpAddresses=true,Administration: View,token,"node (optional), includeServerIpAddresses (optional)",,Yes
+Administration,Initialize Cluster,/api/admin/cluster/init,http://localhost:5380/api/admin/cluster/init?token=x&clusterDomain=example.com&primaryNodeIpAddresse...,Administration: Delete,"token, clusterDomain, primaryNodeIpAddresses",,"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Delete Cluster,/api/admin/cluster/primary/delete,http://localhost:5380/api/admin/cluster/primary/delete?token=x&forceDelete=false,Administration: Delete,token,"node (optional), forceDelete (optional)","clusterInitialized, dnsServerDomain, version",Yes
+Administration,Join Cluster,/api/admin/cluster/primary/join,http://localhost:5380/api/admin/cluster/primary/join?token=x,Administration: Delete,"token, secondaryNodeId, secondaryNodeUrl, secondaryNodeIpAddresses, secondaryNodeCertificate",,"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Remove Secondary Node,/api/admin/cluster/primary/removeSecondary,http://localhost:5380/api/admin/cluster/primary/removeSecondary?token=X&secondaryNodeId=811905692,Administration: Delete,"token, secondaryNodeId",,"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Delete Secondary Node,/api/admin/cluster/primary/deleteSecondary,http://localhost:5380/api/admin/cluster/primary/deleteSecondary?token=X&secondaryNodeId=811905692,Administration: Delete,"token, secondaryNodeId",,"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Update Secondary Node,/api/admin/cluster/primary/updateSecondary,http://localhost:5380/api/admin/cluster/primary/updateSecondary?token=x&secondaryNodeId=811905692&se...,Administration: Delete,"token, secondaryNodeId, secondaryNodeUrl, secondaryNodeIpAddresses, secondaryNodeCertificate",,"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Transfer Config,/api/admin/cluster/primary/transferConfig,http://localhost:5380/api/admin/cluster/primary/transferConfig?token=x&includeZones=,Administration: Delete,token,"includeZones (optional), If-Modified-Since (optional)",,No
+Administration,Set Cluster Options,/api/admin/cluster/primary/setOptions,http://localhost:5380/api/admin/cluster/primary/setOptions?token=x,Administration: Modify,token,"node (optional), heartbeatRefreshIntervalSeconds (optional), heartbeatRetryIntervalSeconds (optional), configRefreshIntervalSeconds (optional), configRetryIntervalSeconds (optional)","clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Initialize And Join Cluster,http://server2.home:5380/api/admin/cluster/initJoin,http://server2.home:5380/api/admin/cluster/initJoin?token=x&secondaryNodeIpAddresses=192.168.10.101&...,Administration: Delete,"token, secondaryNodeIpAddresses, primaryNodeUrl, primaryNodeUsername, primaryNodePassword","primaryNodeIpAddress (optional), ignoreCertificateErrors (optional), primaryNodeTotp (optional)","clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Leave Cluster,/api/admin/cluster/secondary/leave,http://localhost:5380/api/admin/cluster/secondary/leave?token=x,Administration: Delete,token,"node (optional), forceLeave (optional)","clusterInitialized, dnsServerDomain, version",Yes
+Administration,Notify,/api/admin/cluster/secondary/notify,http://localhost:5380/api/admin/cluster/secondary/notify?token=x,Administration: Delete,"token, primaryNodeId, primaryNodeUrl, primaryNodeIpAddresses",,status,Yes
+Administration,Resync Cluster,/api/admin/cluster/secondary/resync,http://localhost:5380/api/admin/cluster/secondary/resync?token=x,Administration: Modify,token,node (optional),status,Yes
+Administration,Update Primary Node,/api/admin/cluster/secondary/updatePrimary,http://localhost:5380/api/admin/cluster/secondary/updatePrimary?token=x,Administration: Modify,"token, primaryNodeUrl","node (optional), primaryNodeIpAddresses (optional)","clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Promote To Primary,/api/admin/cluster/secondary/promote,http://localhost:5380/api/admin/cluster/secondary/promote?token=x,Administration: Delete,token,"node (optional), forceDeletePrimary (optional)","clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Administration,Update Node IP Addresses,/api/admin/cluster/updateIpAddresses,http://localhost:5380/api/admin/cluster/updateIpAddresses?token=x,Administration: Modify,"token, ipAddresses",node (optional),"clusterInitialized, dnsServerDomain, version, clusterDomain, heartbeatRefreshIntervalSeconds",Yes
+Logs & Monitoring,List Logs,/api/logs/list,http://localhost:5380/api/logs/list?token=x,Logs: View,token,node (optional),logFiles,Yes
+Logs & Monitoring,Download Log,/api/logs/download,http://localhost:5380/api/logs/download?token=x&fileName=2020-09-10&limit=2,Logs: View,"token, fileName","node (optional), limit (optional)",,No
+Other,Delete Log,,,Logs: Delete,"token, log",node (optional),,Yes
+Logs & Monitoring,Delete All Logs,/api/logs/deleteAll,http://localhost:5380/api/logs/deleteAll?token=x,Logs: Delete,token,node (optional),,Yes
+Logs & Monitoring,Query Logs,/api/logs/query,http://localhost:5380/api/logs/query?token=x&name=AppName&classPath=AppClassPath&=pageNumber=1&entri...,Logs: View,"token, name, classPath","node (optional), pageNumber (optional), entriesPerPage (optional), descendingOrder (optional), start (optional)","pageNumber, totalPages, totalEntries, entries",Yes
+Logs & Monitoring,Export Query Logs,/api/logs/export,http://localhost:5380/api/logs/export?token=x&name=AppName&classPath=AppClassPath&start=yyyy-MM-dd H...,Logs: View,"token, name, classPath","node (optional), start (optional), end (optional), clientIpAddress (optional), protocol (optional)",,No
